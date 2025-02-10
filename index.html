@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3E8 Robotics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+        }
+        .float-animation {
+            animation: float 1.5s infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient {
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+        }
+        .from-transparent-to-black {
+            background: linear-gradient(180deg, black, transparent);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-black text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 py-6 px-6 from-transparent-to-black">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <i data-lucide="bot" class="h-8 w-8 text-blue-500"></i>
+                <span class="text-2xl font-bold gradient-text">3E8 Robotics</span>
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Hero</a></li>
+                    <li><a href="#features" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Features</a></li>
+                    <li><a href="#robot" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Robot</a></li>
+                    <li><a href="#experts" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Experts</a></li>
+                    <li><a href="#cta" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Join</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="hero" class="relative h-screen flex items-center justify-center">
+            <div class="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-center justify-between">
+                <div class="text-center md:text-left md:w-1/2">
+                    <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                        The Future of 
+                        <span class="gradient-text">Service Robotics</span>
+                    </h1>
+                    <h2 class="text-3xl md:text-5xl font-semibold mb-8">Just $10/Month</h2>
+                    <p class="text-xl mb-12 text-gray-300 max-w-3xl">
+                        Revolutionizing Service Industry Automation with AI-powered robots for restaurants and hospitals.
+                    </p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-lg px-8 py-4 rounded-full">
+                        Join the Waitlist 
+                        <i data-lucide="arrow-right" class="inline-block ml-2 h-5 w-5"></i>
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96">
+                        <img src="robot.gif" alt="3E8 Robotics Service Robot Spinning" class="w-full h-full object-contain rounded-2xl">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
+                <div class="text-white text-4xl float-animation">↓</div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-16">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">💰</div>
+                        <h3 class="text-xl font-semibold mb-2">Affordable & Scalable</h3>
+                        <p class="text-gray-400">Just $500 upfront or $10/month for cutting-edge automation.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🗣️</div>
+                        <h3 class="text-xl font-semibold mb-2">AI-Powered Voice Interaction</h3>
+                        <p class="text-gray-400">Take orders, assist customers, and provide information through natural conversations.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🚶</div>
+                        <h3 class="text-xl font-semibold mb-2">Self-Navigation & Tray Carrying</h3>
+                        <p class="text-gray-400">Fully autonomous movement with smooth and precise delivery.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🚀</div>
+                        <h3 class="text-xl font-semibold mb-2">Built by Industry Experts</h3>
+                        <p class="text-gray-400">Designed by engineers from SpaceX, iRobot, Rivian, and more.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🔌</div>
+                        <h3 class="text-xl font-semibold mb-2">Plug-and-Play Simplicity</h3>
+                        <p class="text-gray-400">No complicated setup, just turn it on and let it work.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-4xl mb-4">⏰</div>
+                        <h3 class="text-xl font-semibold mb-2">24/7 Availability</h3>
+                        <p class="text-gray-400">Tireless service that never needs a break.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="robot" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-16">Meet Your New Team Member</h2>
+                <div class="relative rounded-lg overflow-hidden shadow-2xl aspect-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/UcZoNL_9Emc"
+                        title="3E8 Robotics Service Robot Demo"
+                        class="w-full h-full absolute top-0 left-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="experts" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-16">Built by Industry Experts</h2>
+                <div class="flex flex-wrap lg:flex-nowrap gap-4 items-center justify-center">
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="irobot-logo.png" alt="iRobot logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="Relay_logo_color.png" alt="Relay Robotics logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="indie.png" alt="Indie Semiconductor logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="qnx.png" alt="QNX logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="Rivian-Symbol.png" alt="Rivian logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20 w-40">
+                        <img src="Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-12 w-auto object-contain">
+                    </div>
+
+                </div>
+                <p class="text-2xl text-center text-blue-400 mt-12">
+                    Bringing together expertise from the world's leading technology companies.
+                </p>
+            </div>
+        </section>
+
+        <section id="cta" class="py-20 bg-gradient">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-12">Join the Robotics Revolution</h2>
+                <form class="max-w-lg mx-auto space-y-6">
+                    <input type="text" placeholder="Name" class="w-full bg-white bg-opacity-20 border-0 placeholder-gray-300 text-white text-lg py-6 px-4 rounded-md">
+                    <input type="email" placeholder="Email" class="w-full bg-white bg-opacity-20 border-0 placeholder-gray-300 text-white text-lg py-6 px-4 rounded-md">
+                    <select class="w-full bg-white bg-opacity-20 border-0 text-white text-lg py-6 px-4 rounded-md">
+                        <option value="" disabled selected>Select Business Type</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea placeholder="Tell us about your needs" class="w-full bg-white bg-opacity-20 border-0 placeholder-gray-300 text-white text-lg py-4 px-4 rounded-md"></textarea>
+                    <button type="submit" class="w-full bg-white text-blue-600 hover:bg-blue-100 transition-colors text-lg py-6 rounded-full">
+                        Get Early Access
+                    </button>
+                </form>
+                <p class="text-sm text-center mt-6 text-gray-200">
+                    By signing up, you'll receive priority access, exclusive discounts, and updates on our launch.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-2xl font-bold mb-2">3E8 Robotics</p>
+                    <p class="text-gray-400">
+                        Revolutionizing the service industry with affordable, AI-powered robotics.
+                    </p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" aria-label="Facebook">
+                        <i data-lucide="facebook" class="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i data-lucide="twitter" class="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors"></i>
+                    </a>
+                    <a href="mailto:info@3e8robotics.com" aria-label="Email">
+                        <i data-lucide="mail" class="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2025 3E8 Robotics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for section highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('text-blue-500');
+                            link.classList.remove('text-gray-400');
+                        } else {
+                            link.classList.remove('text-blue-500');
+                            link.classList.add('text-gray-400');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html> 
