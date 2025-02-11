@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#000000">
     <meta property="twitter:card" content="summary">
     <meta property="twitter:image:background" content="#000000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="Revolutionizing Service Industry Automation with AI-powered robots for restaurants and hospitals.">
@@ -42,13 +42,13 @@
 </head>
 <body class="flex flex-col min-h-screen bg-black text-white">
     <header class="fixed top-0 left-0 right-0 z-50 py-6 px-6 from-transparent-to-black">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-start md:justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
                 <img src="3E8_2.png" alt="3E8 Robotics Logo" class="h-5 w-auto">
                 <span class="text-2xl font-bold text-white">Robotics</span>
             </a>
-            <nav>
-                <ul class="flex space-x-6">
+            <nav class="hidden md:block w-auto">
+                <ul class="flex justify-end space-x-6">
                     <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Hero</a></li>
                     <li><a href="#features" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Features</a></li>
                     <li><a href="#robot" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Robot</a></li>
@@ -60,15 +60,15 @@
     </header>
 
     <main class="flex-grow">
-        <section id="hero" class="relative h-screen flex items-center justify-center">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 md:pt-0">
             <div class="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-center justify-between">
                 <div class="text-center md:text-left md:w-1/2">
-                    <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                    <h1 class="text-4xl md:text-8xl font-bold mb-6 leading-tight">
                         The Future of 
                         <span class="gradient-text">Service Robotics</span>
                     </h1>
-                    <h2 class="text-3xl md:text-5xl font-semibold mb-8">Just $10/Day</h2>
-                    <p class="text-xl mb-12 text-gray-300 max-w-3xl">
+                    <h2 class="text-2xl md:text-5xl font-semibold mb-8">Just $10/Day</h2>
+                    <p class="text-lg md:text-xl mb-12 text-gray-300 max-w-3xl">
                         Revolutionizing Service Industry Automation with AI-powered robots for restaurants and hospitals.
                     </p>
                     <a href="mailto:team@3e8robotics.com" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-lg px-8 py-4 rounded-full inline-flex items-center">
