@@ -1,15 +1,9 @@
 const express = require('express');
 const stripe = require('stripe')('YOUR_SECRET_KEY'); // Replace with your Stripe secret key
 const app = express();
-const path = require('path');
 
 app.use(express.json());
 app.use(express.static('.')); // Serve static files from current directory
-
-// Clean URL routes
-app.get('/cleaning', (req, res) => {
-    res.sendFile(path.join(__dirname, 'cleaning.html'));
-});
 
 // Store waitlist entries (in a real app, use a database)
 const waitlist = [];
