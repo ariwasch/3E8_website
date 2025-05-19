@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Cleaning Robot</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-radius: 8px;
+            --spacing: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: var(--spacing) 0;
+            margin-bottom: var(--spacing);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            padding-top: 4rem;
+            padding-bottom: 2rem;
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+        }
+        
+        .form-container {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            min-width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-label span {
+            color: #4b5563;
+            font-weight: normal;
+            display: inline-block;
+            padding-top: 1px;
+        }
+        
+        /* Specific styling for the pilot interest container */
+        .pilot-interest-container {
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .form-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .form-row .form-group {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .form-row button {
+                align-self: flex-end;
+                margin-top: 1.9rem;
+                width: auto;
+                min-width: 180px;
+            }
+            
+            .pilot-interest-container {
+                margin-top: 0;
+            }
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        
+        button:hover {
+            background-color: #2563eb;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .features {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .cost-teaser {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .final-cta {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6b7280;
+            font-size: 0.875rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 2rem;
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Header Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Short-staffed again? We built a robot that cleans what gets skipped.</h1>
+                <p class="subheadline">It wipes tables, cleans restrooms, and helps short-handed teams keep up — no training, no setup, just results.</p>
+                
+                <div class="form-container">
+                    <form id="email-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name (optional)</label>
+                                <input type="text" id="name" name="name" placeholder="Your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email (required)</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry" required>
+                                  <option value="">Select one...</option>
+                                  <option value="Office / Corporate">Office / Corporate</option>
+                                  <option value="Hotel / Hospitality">Hotel / Hospitality</option>
+                                  <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                                  <option value="School / University">School / University</option>
+                                  <option value="Healthcare Facility">Healthcare Facility</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="pilot-interest-container">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pilot-interest" name="pilot-interest">
+                                <span>Interested in free pilot program</span>
+                            </label>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="submit">Join Early Access</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <p>Want to see it in action? Watch a quick 45-second demo below.</p>
+            </div>
+        </section>
+        
+        <!-- Video Section -->
+        <section>
+            <div class="container">
+                <h2>Watch autonomous cleaning in action:</h2>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="video-container" style="flex: 1; min-width: 280px;">
+                        <iframe src="https://www.youtube.com/embed/NrsTlGt03kk" title="Cleaning Robot Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-container" style="flex: 1; min-width: 280px;">
+                        <iframe src="https://www.youtube.com/embed/gVq2cI_9sYQ" title="Second Cleaning Robot Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section>
+            <div class="container">
+                <div class="features">
+                    <h2>What It Handles</h2>
+                    <ul>
+                        <li>Wipes tables in break rooms, cafeterias, and meeting rooms</li>
+                        <li>Cleans bathroom counters, sinks, and stalls</li>
+                        <li>Modular design for office, restaurant, hotel, or school use</li>
+                        <li>Works with your current staff — no extra training or tech setup</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Cost Teaser Section -->
+        <section>
+            <div class="container">
+                <div class="cost-teaser">
+                    <h2>Designed for Tight Budgets</h2>
+                    <p>We're testing pricing now, but aiming to make it cheaper than a single month of janitorial labor. Early access users get first look, priority support, and discounted pilot pricing.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <div class="container">
+                <h3>Want to test it or just see what it can do?</h3>
+                <div class="form-container">
+                    <form id="email-form-bottom">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name-bottom">Name (optional)</label>
+                                <input type="text" id="name-bottom" name="name" placeholder="Your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email-bottom">Email (required)</label>
+                                <input type="email" id="email-bottom" name="email" placeholder="your@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry-bottom">Industry</label>
+                                <select id="industry-bottom" name="industry" required>
+                                  <option value="">Select one...</option>
+                                  <option value="Office / Corporate">Office / Corporate</option>
+                                  <option value="Hotel / Hospitality">Hotel / Hospitality</option>
+                                  <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                                  <option value="School / University">School / University</option>
+                                  <option value="Healthcare Facility">Healthcare Facility</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="pilot-interest-container">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pilot-interest-bottom" name="pilot-interest">
+                                <span>Interested in free pilot program</span>
+                            </label>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="submit">Join Early Access</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Built by students researching labor automation. We're not selling anything yet — just looking for honest feedback from people who deal with cleaning challenges every day.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFlRCQhc3XYYZK_uTvaPQM1Ul6nh3QnoI",
+            authDomain: "e8-website.firebaseapp.com",
+            projectId: "e8-website",
+            storageBucket: "e8-website.appspot.com",
+            messagingSenderId: "1083565871006",
+            appId: "1:1083565871006:web:06f437aa017cdf6632108f",
+            measurementId: "G-8PZZT22DYS"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Form handling - now saves to Firebase
+        document.getElementById('email-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const industry = document.getElementById('industry').value;
+            const pilotInterest = document.getElementById('pilot-interest').checked;
+            
+            try {
+                console.log("Attempting to submit form data...");
+                const docRef = await addDoc(collection(db, "submissions"), {
+                    email: email,
+                    name: name,
+                    industry: industry,
+                    pilotInterest: pilotInterest,
+                    source: 'top-form',
+                    timestamp: new Date()
+                });
+                console.log("Document written with ID: ", docRef.id);
+                alert('Thanks for your interest! We\'ll be in touch soon.');
+                this.reset();
+            } catch (error) {
+                console.error("Error submitting form: ", error);
+                alert('There was an error submitting the form. Please try again.');
+            }
+        });
+        
+        document.getElementById('email-form-bottom').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email-bottom').value;
+            const name = document.getElementById('name-bottom').value;
+            const industry = document.getElementById('industry-bottom').value;
+            const pilotInterest = document.getElementById('pilot-interest-bottom').checked;
+            
+            try {
+                console.log("Attempting to submit form data...");
+                const docRef = await addDoc(collection(db, "submissions"), {
+                    email: email,
+                    name: name,
+                    industry: industry,
+                    pilotInterest: pilotInterest,
+                    source: 'bottom-form',
+                    timestamp: new Date()
+                });
+                console.log("Document written with ID: ", docRef.id);
+                alert('Thanks for your interest! We\'ll be in touch soon.');
+                this.reset();
+            } catch (error) {
+                console.error("Error submitting form: ", error);
+                alert('There was an error submitting the form. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
