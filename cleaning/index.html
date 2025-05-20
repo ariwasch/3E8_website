@@ -302,8 +302,15 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="email">Email (required)</label>
+                                <label for="email">Email</label>
                                 <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-name">Business Name</label>
+                                <input type="text" id="business-name" name="business-name" placeholder="Your business name" required>
                             </div>
                             
                             <div class="form-group">
@@ -390,8 +397,15 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="email-bottom">Email (required)</label>
+                                <label for="email-bottom">Email</label>
                                 <input type="email" id="email-bottom" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-name-bottom">Business Name</label>
+                                <input type="text" id="business-name-bottom" name="business-name" placeholder="Your business name" required>
                             </div>
                             
                             <div class="form-group">
@@ -460,6 +474,7 @@
             
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
+            const businessName = document.getElementById('business-name').value;
             const industry = document.getElementById('industry').value;
             const pilotInterest = document.getElementById('pilot-interest').checked;
             
@@ -468,6 +483,7 @@
                 const docRef = await addDoc(collection(db, "submissions"), {
                     email: email,
                     name: name,
+                    businessName: businessName,
                     industry: industry,
                     pilotInterest: pilotInterest,
                     source: 'top-form',
@@ -495,6 +511,7 @@
             
             const email = document.getElementById('email-bottom').value;
             const name = document.getElementById('name-bottom').value;
+            const businessName = document.getElementById('business-name-bottom').value;
             const industry = document.getElementById('industry-bottom').value;
             const pilotInterest = document.getElementById('pilot-interest-bottom').checked;
             
@@ -503,6 +520,7 @@
                 const docRef = await addDoc(collection(db, "submissions"), {
                     email: email,
                     name: name,
+                    businessName: businessName,
                     industry: industry,
                     pilotInterest: pilotInterest,
                     source: 'bottom-form',
