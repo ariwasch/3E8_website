@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autonomous Cleaning Robot</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8PZZT22DYS');
+    </script>
     <style>
         :root {
             --primary-color: #3b82f6;
@@ -285,6 +293,13 @@
                 <h1>Short-staffed again? We built a robot that cleans what gets skipped.</h1>
                 <p class="subheadline">It wipes tables, cleans restrooms, and helps short-handed teams keep up — no training, no setup, just results.</p>
                 
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="robot-2.png" alt="Autonomous cleaning robot in action" style="max-width: 400px; width: 100%; border-radius: 12px;">
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">
+                        Current prototype. Modular, mobile, and built to handle tables, counters, and restrooms.
+                    </p>
+                </div>
+                
                 <div class="form-container">
                     <form id="email-form">
                         <div class="form-row">
@@ -466,6 +481,14 @@
                     timestamp: new Date()
                 });
                 console.log("Document written with ID: ", docRef.id);
+                
+                // Google tag (gtag.js) event
+                gtag('event', 'add_to_cart', {
+                    form_id: 'top-form',
+                    email: email,
+                    industry: industry
+                });
+                
                 alert('Thanks for your interest! We\'ll be in touch soon.');
                 this.reset();
             } catch (error) {
@@ -493,6 +516,14 @@
                     timestamp: new Date()
                 });
                 console.log("Document written with ID: ", docRef.id);
+                
+                // Google tag (gtag.js) event
+                gtag('event', 'add_to_cart', {
+                    form_id: 'bottom-form',
+                    email: email,
+                    industry: industry
+                });
+                
                 alert('Thanks for your interest! We\'ll be in touch soon.');
                 this.reset();
             } catch (error) {
