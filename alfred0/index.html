@@ -477,16 +477,16 @@
             
             try {
                 console.log("Submitting research data...", submissionData);
-                const docRef = await addDoc(collection(db, "robot-research"), submissionData);
+                const docRef = await addDoc(collection(db, "alfred0"), submissionData);
                 console.log("Research data saved with ID: ", docRef.id);
                 
                 // Google Analytics event
                 gtag('event', 'form_submit', {
-                    form_id: 'robot-research',
-                    folder: 'alfred0',
+                    form_id: 'alfred0',
                     industry: submissionData.industry,
-                    challenge: submissionData.biggestChallenge,
-                    pilot_interest: submissionData.pilotInterest
+                    biggest_challenge: submissionData.biggestChallenge,
+                    pilot_interest: submissionData.pilotInterest,
+                    budget_range: submissionData.budgetRange
                 });
                 
                 alert('Thank you for your input! Your responses help us build more useful robots.');
