@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Humanoid Robot Research</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8PZZT22DYS');
+    </script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-radius: 8px;
+            --spacing: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: var(--spacing) 0;
+            margin-bottom: var(--spacing);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            padding-top: 4rem;
+            padding-bottom: 2rem;
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+        }
+        
+        .form-container {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            min-width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-label span {
+            color: #4b5563;
+            font-weight: normal;
+            display: inline-block;
+            padding-top: 1px;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .form-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .form-row .form-group {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .form-row button {
+                align-self: flex-end;
+                margin-top: 1.9rem;
+                width: auto;
+                min-width: 180px;
+            }
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        
+        button:hover {
+            background-color: #2563eb;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .research-info {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .examples {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e5e7eb;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6b7280;
+            font-size: 0.875rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 2rem;
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Header Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Semi-Humanoid Robot Interest Survey</h1>
+                <p class="subheadline">We're researching real-world applications for semi-humanoid robots and want to understand what tasks would be most valuable to you and your organization.</p>
+                                
+                <div class="form-container">
+                    <form id="research-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name (optional)</label>
+                                <input type="text" id="name" name="name" placeholder="Your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="organization">Organization/Company</label>
+                                <input type="text" id="organization" name="organization" placeholder="Your company or organization" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry" required>
+                                  <option value="">Select one...</option>
+                                  <option value="Office / Corporate">Office / Corporate</option>
+                                  <option value="Hotel / Hospitality">Hotel / Hospitality</option>
+                                  <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                                  <option value="Retail">Retail</option>
+                                  <option value="Healthcare">Healthcare</option>
+                                  <option value="Education">Education</option>
+                                  <option value="Manufacturing">Manufacturing</option>
+                                  <option value="Logistics / Warehousing">Logistics / Warehousing</option>
+                                  <option value="Security">Security</option>
+                                  <option value="Personal / Home Use">Personal / Home Use</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="biggest-challenge">What's your current biggest operational challenge?</label>
+                            <select id="biggest-challenge" name="biggest-challenge" required>
+                              <option value="">Select one...</option>
+                              <option value="staffing-shortages">Staffing shortages</option>
+                              <option value="high-labor-costs">High labor costs</option>
+                              <option value="consistency-quality">Consistency/quality issues</option>
+                              <option value="safety-concerns">Safety concerns</option>
+                              <option value="time-consuming-tasks">Time-consuming repetitive tasks</option>
+                              <option value="24-7-coverage">Need for 24/7 coverage</option>
+                              <option value="other-challenge">Other</option>
+                            </select>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="specific-use-case">Describe your specific use case or challenge:</label>
+                            <textarea id="specific-use-case" name="specific-use-case" placeholder="Tell us about the specific tasks, environment, or challenges you'd want a robot to help with..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="robot-solution">If a robot existed to solve your biggest problem, what would it do?</label>
+                            <textarea id="robot-solution" name="robot-solution" placeholder="Describe the specific actions, behaviors, or capabilities the robot would need to address your challenge..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pilot-interest" name="pilot-interest">
+                                <span>I'd be interested in piloting a robot solution for my specific use case</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget-range">What budget range would make sense for your use case?</label>
+                            <select id="budget-range" name="budget-range" required>
+                              <option value="">Select one...</option>
+                              <option value="under-1k">Under $1,000/month</option>
+                              <option value="1k-5k">$1,000 - $5,000/month</option>
+                              <option value="5k-10k">$5,000 - $10,000/month</option>
+                              <option value="10k-25k">$10,000 - $25,000/month</option>
+                              <option value="25k-plus">$25,000+/month</option>
+                              <option value="one-time-purchase">Prefer one-time purchase</option>
+                              <option value="unsure">Not sure</option>
+                            </select>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="submit">Share My Input</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <p class="form-note">This research helps us understand real market needs. Your responses are confidential and help shape future robot development.</p>
+            </div>
+        </section>
+        
+        <!-- Video Showcase Section -->
+        <section>
+            <div class="container">
+                <h2>See Semi-Humanoid Robots in Action</h2>
+                <p>Here's an example of what current semi-humanoid robots can do:</p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ZFIps7C3gj4" title="Semi-Humanoid Robot Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Research Info Section -->
+        <section>
+            <div class="container">
+                <div class="research-info">
+                    <h2>Why We're Asking</h2>
+                    <p>Semi-humanoid robots are becoming more capable and affordable, but we want to build solutions that address real problems. Your input helps us understand:</p>
+                    <ul>
+                        <li>Which tasks would provide the most value if automated</li>
+                        <li>What environments and constraints robots need to work within</li>
+                        <li>What pricing models make sense for different use cases</li>
+                        <li>How to prioritize development of different capabilities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>This research is conducted by students studying robotics and automation. We're not selling anything—just gathering insights to guide development of useful robotic solutions.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFlRCQhc3XYYZK_uTvaPQM1Ul6nh3QnoI",
+            authDomain: "e8-website.firebaseapp.com",
+            projectId: "e8-website",
+            storageBucket: "e8-website.appspot.com",
+            messagingSenderId: "1083565871006",
+            appId: "1:1083565871006:web:06f437aa017cdf6632108f",
+            measurementId: "G-8PZZT22DYS"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Form handling - now saves research data to Firebase
+        document.getElementById('research-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            const submissionData = {
+                name: formData.get('name') || '',
+                email: formData.get('email'),
+                organization: formData.get('organization'),
+                industry: formData.get('industry'),
+                biggestChallenge: formData.get('biggest-challenge'),
+                specificUseCase: formData.get('specific-use-case'),
+                robotSolution: formData.get('robot-solution'),
+                pilotInterest: document.getElementById('pilot-interest').checked,
+                budgetRange: formData.get('budget-range'),
+                timestamp: new Date()
+            };
+            
+            try {
+                console.log("Submitting research data...", submissionData);
+                const docRef = await addDoc(collection(db, "robot-research"), submissionData);
+                console.log("Research data saved with ID: ", docRef.id);
+                
+                // Google Analytics event
+                gtag('event', 'form_submit', {
+                    form_id: 'robot-research',
+                    folder: 'alfred0',
+                    industry: submissionData.industry,
+                    challenge: submissionData.biggestChallenge,
+                    pilot_interest: submissionData.pilotInterest
+                });
+                
+                alert('Thank you for your input! Your responses help us build more useful robots.');
+                this.reset();
+            } catch (error) {
+                console.error("Error submitting research data: ", error);
+                alert('There was an error submitting your response. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
