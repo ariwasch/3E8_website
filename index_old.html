@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3E8 Robotics - The Universal Robot Solution</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8PZZT22DYS');
+    </script>
+    <meta property="og:title" content="3E8 Robotics - The Universal Robot Solution">
+    <meta property="og:description" content="The future of robotics: One versatile robot that can do anything, for anyone, at just $5999.">
+    <meta property="og:image" content="3E8_blue.jpg">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#000000">
+    <meta property="twitter:card" content="summary">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="The future of robotics: One versatile robot that can do anything, for anyone, at just $5999.">
+    <link rel="icon" type="image/png" href="3.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+        }
+        .float-animation {
+            animation: float 1.5s infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient {
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+        }
+        .from-transparent-to-black {
+            background: linear-gradient(180deg, black, transparent);
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
+            transform: translate(-50%, -50%);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-black text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 py-6 px-6 from-transparent-to-black">
+        <div class="container mx-auto flex justify-start md:justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="3E8_2.png" alt="3E8 Robotics Logo" class="h-5 w-auto">
+                <span class="text-2xl font-bold text-white">Robotics</span>
+            </a>
+            <nav class="hidden md:block w-auto">
+                <ul class="flex justify-end space-x-6">
+                    <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Hero</a></li>
+                    <li><a href="#experts" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Experts</a></li>
+                    <li><a href="#robot" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Demo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 md:pt-0">
+            <div class="video-background">
+                <iframe 
+                    src="https://www.youtube.com/embed/ZFIps7C3gj4?autoplay=1&mute=1&loop=1&playlist=ZFIps7C3gj4&controls=0&showinfo=0&modestbranding=1&start=4&end=40&enablejsapi=1&rel=0&iv_load_policy=3"
+                    title="Background Video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    id="background-video">
+                </iframe>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container mx-auto px-6 relative z-20 flex items-center justify-center">
+                <div class="text-center w-full">
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-tight whitespace-nowrap text-center overflow-hidden">
+                        One Robot <span class="gradient-text">Any Task</span>
+                    </h1>
+                    <h2 class="text-3xl md:text-6xl font-semibold mb-12">Just $3800</h2>
+                    <p class="text-xl md:text-2xl mb-16 text-gray-200 max-w-4xl mx-auto">
+                        Semi-humanoid robot with AI capabilities to automate tasks and address labor shortages across industries.
+                    </p>
+                    <div class="flex flex-col gap-6 justify-center items-center">
+                        <a href="https://3e8robotics.com/alfred0/" class="bg-white hover:bg-gray-100 text-blue-600 transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                            what do you want this robot to do?
+                            <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
+                        </a>
+                        <a href="mailto:team@3e8robotics.com" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                            Contact Us 
+                            <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="experts" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-16">Built by Industry Experts</h2>
+                <div class="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="irobot-logo.png" alt="iRobot logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="Relay_logo_color.png" alt="Relay Robotics logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="indie-Logo.png" alt="Indie Semiconductor logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="Rivian-Symbol.png" alt="Rivian logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="Tesla_logo.png" alt="Tesla logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="qnx.png" alt="QNX logo" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                        <img src="level.jpg" alt="Level logo" class="h-12 w-auto object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="robot" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-8">See It In Action</h2>                
+                <div class="max-w-5xl mx-auto">
+                    <div class="relative rounded-xl overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.5)] aspect-video">
+                        <iframe 
+                            src="https://www.youtube.com/embed/ZFIps7C3gj4"
+                            title="3E8 Robotics Service Robot Demo"
+                            class="w-full h-full absolute top-0 left-0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-2xl font-bold mb-2">3E8 Robotics</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:team@3e8robotics.com" aria-label="Email">
+                        <i data-lucide="mail" class="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2025 3E8 Robotics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // YouTube API for background video looping
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('background-video', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.seekTo(4);
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                var currentTime = player.getCurrentTime();
+                if (currentTime >= 40) {
+                    player.seekTo(4);
+                }
+            }
+            if (event.data == YT.PlayerState.ENDED) {
+                player.seekTo(4);
+                player.playVideo();
+            }
+        }
+
+        // Check video time every second to ensure it loops at 40 seconds
+        setInterval(function() {
+            if (player && player.getCurrentTime) {
+                var currentTime = player.getCurrentTime();
+                if (currentTime >= 40) {
+                    player.seekTo(4);
+                }
+            }
+        }, 1000);
+
+        // Load YouTube API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for section highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('text-blue-500');
+                            link.classList.remove('text-gray-400');
+                        } else {
+                            link.classList.remove('text-blue-500');
+                            link.classList.add('text-gray-400');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html> 

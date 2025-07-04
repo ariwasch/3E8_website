@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3E8 Robotics - The Universal Robot Solution</title>
+    <title>3E8 Wrangler - Multi-Floor Cleaning & Delivery Robot</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
     <script>
@@ -12,8 +12,8 @@
       gtag('js', new Date());
       gtag('config', 'G-8PZZT22DYS');
     </script>
-    <meta property="og:title" content="3E8 Robotics - The Universal Robot Solution">
-    <meta property="og:description" content="The future of robotics: One versatile robot that can do anything, for anyone, at just $5999.">
+    <meta property="og:title" content="3E8 Wrangler - Multi-Floor Cleaning & Delivery Robot">
+    <meta property="og:description" content="Advanced multi-floor robot for cleaning, delivery, and micro-bot deployment. Elevator-capable for complete building automation at $3800.">
     <meta property="og:image" content="3E8_blue.jpg">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#000000">
@@ -21,12 +21,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="description" content="The future of robotics: One versatile robot that can do anything, for anyone, at just $5999.">
+    <meta name="description" content="Advanced multi-floor robot for cleaning, delivery, and micro-bot deployment. Elevator-capable for complete building automation at $3800.">
     <link rel="icon" type="image/png" href="3.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+        }
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(10px); }
@@ -73,20 +77,51 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
+        
+        /* Custom Slider Styles */
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .slider::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #3B82F6, #9333EA);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .slider::-webkit-slider-track {
+            background: #374151;
+            border-radius: 5px;
+        }
+        
+        .slider::-moz-range-track {
+            background: #374151;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-black text-white">
     <header class="fixed top-0 left-0 right-0 z-50 py-6 px-6 from-transparent-to-black">
         <div class="container mx-auto flex justify-start md:justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <img src="3E8_2.png" alt="3E8 Robotics Logo" class="h-5 w-auto">
-                <span class="text-2xl font-bold text-white">Robotics</span>
+                <img src="3e8_logo.png" alt="3E8 Robotics Logo" class="h-5 w-auto">
+                <span class="text-2xl font-bold text-white">3E8 Robotics</span>
             </a>
             <nav class="hidden md:block w-auto">
                 <ul class="flex justify-end space-x-6">
-                    <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Hero</a></li>
-                    <li><a href="#experts" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Experts</a></li>
-                    <li><a href="#robot" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Demo</a></li>
+                    <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Home</a></li>
+                    <li><a href="/wrangler" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Waitlist</a></li>
+                    <li><a href="#demo" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">See it in action</a></li>
                 </ul>
             </nav>
         </div>
@@ -95,32 +130,29 @@
     <main class="flex-grow">
         <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 md:pt-0">
             <div class="video-background">
-                <iframe 
-                    src="https://www.youtube.com/embed/ZFIps7C3gj4?autoplay=1&mute=1&loop=1&playlist=ZFIps7C3gj4&controls=0&showinfo=0&modestbranding=1&start=4&end=40&enablejsapi=1&rel=0&iv_load_policy=3"
-                    title="Background Video"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    id="background-video">
-                </iframe>
+                <img 
+                    src="3E8_gif.gif"
+                    alt="3E8 Wrangler Robot Demo"
+                    class="absolute top-1/2 left-1/2 w-full h-full object-cover transform -translate-x-1/2 -translate-y-1/2"
+                    id="background-gif">
             </div>
             <div class="hero-overlay"></div>
             <div class="container mx-auto px-6 relative z-20 flex items-center justify-center">
                 <div class="text-center w-full">
                     <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-tight whitespace-nowrap text-center overflow-hidden">
-                        One Robot <span class="gradient-text">Any Task</span>
+                        <span class="gradient-text">The Wrangler</span>
                     </h1>
-                    <h2 class="text-3xl md:text-6xl font-semibold mb-12">Just $3800</h2>
+                    <h2 class="text-2xl md:text-4xl font-semibold mb-8">Multi-Floor Cleaning & Delivery Robot</h2>
                     <p class="text-xl md:text-2xl mb-16 text-gray-200 max-w-4xl mx-auto">
-                        Semi-humanoid robot with AI capabilities to automate tasks and address labor shortages across industries.
+                        Advanced multi-floor robot that cleans, delivers, and deploys micro-bots. Elevator-capable for complete building automation across all floors.
                     </p>
                     <div class="flex flex-col gap-6 justify-center items-center">
-                        <a href="https://3e8robotics.com/alfred0/" class="bg-white hover:bg-gray-100 text-blue-600 transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
-                            what do you want this robot to do?
+                        <a href="/wrangler" class="bg-white hover:bg-gray-100 text-blue-600 transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                            Join the Waitlist
                             <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
                         </a>
-                        <a href="mailto:team@3e8robotics.com" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
-                            Contact Us 
+                        <a href="/wrangler?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                            Request Demo 
                             <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
                         </a>
                     </div>
@@ -129,59 +161,269 @@
 
         </section>
 
-        <section id="experts" class="py-20 bg-black">
+        <section id="capabilities" class="py-20 bg-gray-900">
             <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bold text-center mb-16">Built by Industry Experts</h2>
-                <div class="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-12 w-auto object-contain">
+                <h2 class="text-5xl font-bold text-center mb-16">Wrangler Capabilities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-black p-6 rounded-lg shadow-lg text-center">
+                        <div class="mb-4">
+                            <i data-lucide="spray-can" class="h-12 w-12 text-blue-500 mx-auto"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Multi-Floor Cleaning</h3>
+                        <p class="text-gray-300">Autonomous cleaning across multiple floors with advanced navigation</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="irobot-logo.png" alt="iRobot logo" class="h-12 w-auto object-contain">
+                    <div class="bg-black p-6 rounded-lg shadow-lg text-center">
+                        <div class="mb-4">
+                            <i data-lucide="package" class="h-12 w-12 text-blue-500 mx-auto"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Indoor Delivery</h3>
+                        <p class="text-gray-300">Reliable delivery service throughout your building</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="Relay_logo_color.png" alt="Relay Robotics logo" class="h-16 w-auto object-contain">
+                    <div class="bg-black p-6 rounded-lg shadow-lg text-center">
+                        <div class="mb-4">
+                            <i data-lucide="zap" class="h-12 w-12 text-blue-500 mx-auto"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Micro-Bot Deployment</h3>
+                        <p class="text-gray-300">Deploy and coordinate smaller robots for specialized tasks</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="indie-Logo.png" alt="Indie Semiconductor logo" class="h-12 w-auto object-contain">
-                    </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="Rivian-Symbol.png" alt="Rivian logo" class="h-16 w-auto object-contain">
-                    </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="Tesla_logo.png" alt="Tesla logo" class="h-16 w-auto object-contain">
-                    </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="qnx.png" alt="QNX logo" class="h-16 w-auto object-contain">
-                    </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-12 w-auto object-contain">
-                    </div>
-                    <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                        <img src="level.jpg" alt="Level logo" class="h-12 w-auto object-contain">
+                    <div class="bg-black p-6 rounded-lg shadow-lg text-center">
+                        <div class="mb-4">
+                            <i data-lucide="arrow-up-down" class="h-12 w-12 text-blue-500 mx-auto"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Elevator Navigation</h3>
+                        <p class="text-gray-300">Seamlessly navigate between floors using elevators</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="robot" class="py-20 bg-black">
+        <!-- See It In Action Section -->
+        <section id="demo" class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold mb-6"><span class="gradient-text">See It In Action</span></h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Real footage of our robot performing complex tasks in actual environments
+                    </p>
+                </div>
+                
+                <!-- Equal Size Demo Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10">
+                        <div class="aspect-video rounded-lg overflow-hidden mb-4">
+                            <img 
+                                src="leave_elevator.gif" 
+                                alt="Robot navigating elevator autonomously"
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-purple-400">Multi-Floor Delivery System</h4>
+                        <p class="text-gray-300 text-sm">Autonomous elevator navigation enabling seamless delivery across all building floors</p>
+                    </div>
+                    
+                    <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10">
+                        <div class="aspect-video rounded-lg overflow-hidden mb-4">
+                            <img 
+                                src="microbot.gif" 
+                                alt="Micro-bot deployment in action"
+                                class="w-full h-full object-cover object-bottom"
+                            >
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-blue-400">Micro-Bot Coordination</h4>
+                        <p class="text-gray-300 text-sm">Deploying specialized micro-bots for detailed cleaning tasks</p>
+                    </div>
+                    
+                    <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10">
+                        <div class="aspect-video rounded-lg overflow-hidden mb-4">
+                            <img 
+                                src="push_button.gif" 
+                                alt="Robot operating building controls"
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-green-400">Precise Control Interface</h4>
+                        <p class="text-gray-300 text-sm">Operating elevator buttons and building systems with accuracy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="robot" class="py-12 bg-black">
             <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bold text-center mb-8">See It In Action</h2>                
+                <h2 class="text-4xl font-bold text-center mb-8">Calculate Your Savings</h2>
+                
                 <div class="max-w-5xl mx-auto">
-                    <div class="relative rounded-xl overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.5)] aspect-video">
-                        <iframe 
-                            src="https://www.youtube.com/embed/ZFIps7C3gj4"
-                            title="3E8 Robotics Service Robot Demo"
-                            class="w-full h-full absolute top-0 left-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
+                    <!-- Sliders -->
+                    <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 p-6 rounded-xl border border-blue-500/30 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Building Size Slider -->
+                            <div>
+                                <label class="block">
+                                    <span class="text-sm font-semibold text-blue-400">Building Size</span>
+                                    <div class="flex justify-between items-baseline">
+                                        <div class="text-lg font-bold text-white mt-1" id="squareFootageDisplay">50,000 sq ft</div>
+                                        <div class="text-xs text-gray-400" id="robotCountDisplay">1 Robot needed</div>
+                                    </div>
+                                </label>
+                                <div class="mt-2">
+                                    <input 
+                                        type="range" 
+                                        id="squareFootage" 
+                                        min="10000" 
+                                        max="500000" 
+                                        step="5000"
+                                        value="50000"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider">
+                                    <div class="flex justify-between text-xs text-gray-400 mt-1">
+                                        <span>10K</span>
+                                        <span>500K</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Daily Deliveries Slider -->
+                            <div>
+                                <label class="block">
+                                    <span class="text-sm font-semibold text-green-400">Daily Deliveries</span>
+                                    <div class="text-lg font-bold text-white mt-1" id="deliveriesDisplay">50 per day</div>
+                                </label>
+                                <div class="mt-2">
+                                    <input 
+                                        type="range" 
+                                        id="dailyDeliveries" 
+                                        min="10" 
+                                        max="200" 
+                                        step="5"
+                                        value="50"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider">
+                                    <div class="flex justify-between text-xs text-gray-400 mt-1">
+                                        <span>10</span>
+                                        <span>200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Results Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Left: Key Metrics -->
+                        <div class="space-y-6">
+                            <!-- Summary Comparison -->
+                            <div class="bg-gray-900 p-6 rounded-xl border border-blue-500/20">
+                                <h3 class="text-xl font-semibold mb-4 text-center">Annual Cost Comparison</h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-300">Traditional Method:</span>
+                                        <span class="text-red-400 font-bold text-xl" id="traditionalCost">$108,000</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-300">With Wrangler:</span>
+                                        <span class="text-green-400 font-bold text-xl" id="wranglerCost">$5,400</span>
+                                    </div>
+                                    <div class="border-t border-gray-600 pt-4">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-semibold text-lg">Annual Savings:</span>
+                                            <span class="text-green-400 font-bold text-2xl" id="annualSavings">$102,600</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Metrics Grid -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="bg-gray-900 p-4 rounded-xl text-center border border-blue-500/20">
+                                    <div class="text-2xl font-bold text-blue-500 mb-1" id="costReduction">95%</div>
+                                    <h3 class="text-sm font-semibold">Cost Reduction</h3>
+                                </div>
+                                <div class="bg-gray-900 p-4 rounded-xl text-center border border-blue-500/20">
+                                    <div class="text-2xl font-bold text-green-500 mb-1" id="paybackDays">37</div>
+                                    <h3 class="text-sm font-semibold">Payback Days</h3>
+                                </div>
+                                <div class="bg-gray-900 p-4 rounded-xl text-center border border-blue-500/20">
+                                    <div class="text-2xl font-bold text-purple-500 mb-1" id="fiveYearSavings">$513K</div>
+                                    <h3 class="text-sm font-semibold">5-Year Savings</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Chart -->
+                        <div class="bg-gray-900 p-6 rounded-xl border border-blue-500/20">
+                            <h4 class="text-xl font-semibold mb-4 text-center">Financial Breakdown Over Time</h4>
+                            <div class="relative h-64">
+                                <canvas id="savingsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Source Note -->
+                    <div class="text-center mt-8">
+                        <p class="text-xs text-gray-500">
+                            Cost estimates based on industry data: Commercial cleaning at $1.50/sq ft annually and delivery costs at $8.40 per delivery
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <section id="experts" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16">Built by Industry Experts</h2>
+            <div class="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-12 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="irobot-logo.png" alt="iRobot logo" class="h-12 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="Relay_logo_color.png" alt="Relay Robotics logo" class="h-16 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="indie-Logo.png" alt="Indie Semiconductor logo" class="h-16 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="Rivian-Symbol.png" alt="Rivian logo" class="h-32 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="johns_hopkins.png" alt="Tesla logo" class="h-16 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="qnx.png" alt="QNX logo" class="h-22 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-16 w-auto object-contain">
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
+                    <img src="verkada.png" alt="Level logo" class="h-22 w-auto object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="py-20 bg-gray-900 relative border-t border-blue-500/20">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6"><span class="gradient-text">Ready to Transform Your Building Operations?</span></h2>
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                Join forward-thinking companies already saving thousands with automated cleaning and delivery solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="/wrangler" class="bg-white hover:bg-gray-100 text-blue-600 transition-colors text-xl px-8 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                    Join the Waitlist
+                    <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
+                </a>
+                <a href="/wrangler?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-8 py-4 rounded-full inline-flex items-center justify-center font-semibold">
+                    Request Demo 
+                    <i data-lucide="arrow-right" class="ml-3 h-6 w-6"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="bg-black text-white py-12">
         <div class="container mx-auto px-6">
@@ -196,6 +438,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-300 mb-2">Built with ❤️ by robotics engineers and enthusiasts</p>
                 <p class="text-gray-400">&copy; 2025 3E8 Robotics. All rights reserved.</p>
             </div>
         </div>
@@ -205,50 +448,7 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // YouTube API for background video looping
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('background-video', {
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.seekTo(4);
-            event.target.playVideo();
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-                var currentTime = player.getCurrentTime();
-                if (currentTime >= 40) {
-                    player.seekTo(4);
-                }
-            }
-            if (event.data == YT.PlayerState.ENDED) {
-                player.seekTo(4);
-                player.playVideo();
-            }
-        }
-
-        // Check video time every second to ensure it loops at 40 seconds
-        setInterval(function() {
-            if (player && player.getCurrentTime) {
-                var currentTime = player.getCurrentTime();
-                if (currentTime >= 40) {
-                    player.seekTo(4);
-                }
-            }
-        }, 1000);
-
-        // Load YouTube API
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        // GIF will loop automatically, no additional JavaScript needed
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -281,6 +481,301 @@
         }, { threshold: 0.5 });
 
         sections.forEach(section => observer.observe(section));
+
+        // Cost Calculator Logic
+        let savingsChart;
+
+        function calculateCosts(squareFootage, deliveriesPerDay) {
+            // Real industry data for cleaning costs per sq ft annually
+            const cleaningCostPerSqFt = 1.50; // $1.50 per sq ft annually (industry standard $0.12-0.25/sq ft monthly)
+            // Real industry data for delivery costs based on worker wages and time
+            const deliveryWorkerWage = 18.19; // Average delivery driver wage per hour (PayScale 2024)
+            const overheadMultiplier = 1.40; // 40% overhead for benefits, insurance, training
+            const totalLaborCostPerHour = deliveryWorkerWage * overheadMultiplier; // $25.47/hour
+            const averageDeliveryTimeHours = 0.33; // 20 minutes per delivery (including travel, waiting, signatures)
+            const costPerDelivery = totalLaborCostPerHour * averageDeliveryTimeHours; // ~$8.40 per delivery
+            const workingDaysPerYear = 250; // Business days
+            const deliveryTraditionalCost = deliveriesPerDay * costPerDelivery * workingDaysPerYear;
+            
+            // Auto-calculate robot count based on building size
+            const robotCapacity = 75000; // sq ft per robot
+            const robotsNeeded = Math.max(1, Math.ceil(squareFootage / robotCapacity));
+            
+            // Calculate cleaning costs
+            const cleaningTraditionalCost = squareFootage * cleaningCostPerSqFt;
+            const cleaningWranglerCost = robotsNeeded * 2500; // Fixed $2.5K per robot for cleaning
+            const cleaningSavings = cleaningTraditionalCost - cleaningWranglerCost;
+            const cleaningSavingsPercent = Math.round((cleaningSavings / cleaningTraditionalCost) * 100);
+            
+            // Calculate delivery costs
+            const deliveryWranglerCost = robotsNeeded * 2500; // Fixed $2.5K per robot for delivery
+            const deliverySavings = deliveryTraditionalCost - deliveryWranglerCost;
+            const deliverySavingsPercent = Math.round((deliverySavings / deliveryTraditionalCost) * 100);
+            
+            // Total costs
+            const traditionalCost = cleaningTraditionalCost + deliveryTraditionalCost;
+            const wranglerCost = robotsNeeded * 5000; // Each robot costs $5K total to operate annually
+            const annualSavings = traditionalCost - wranglerCost;
+            
+            // ROI calculations
+            const robotPrice = 5000;
+            const totalRobotCost = robotsNeeded * robotPrice;
+            const paybackDays = annualSavings > 0 ? Math.round((totalRobotCost / annualSavings) * 365) : 0;
+            const costReduction = Math.round((annualSavings / traditionalCost) * 100);
+            const fiveYearSavings = (annualSavings * 5) - totalRobotCost;
+
+            return {
+                // Cleaning metrics
+                cleaningTraditionalCost,
+                cleaningWranglerCost,
+                cleaningSavings,
+                cleaningSavingsPercent,
+                
+                // Delivery metrics
+                deliveryTraditionalCost,
+                deliveryWranglerCost,
+                deliverySavings,
+                deliverySavingsPercent,
+                deliveriesPerDay,
+                
+                // Total metrics
+                traditionalCost,
+                wranglerCost,
+                annualSavings,
+                paybackDays,
+                robotsNeeded,
+                costReduction,
+                fiveYearSavings
+            };
+        }
+
+        function updateCalculator() {
+            const squareFootage = parseInt(document.getElementById('squareFootage').value) || 50000;
+            const dailyDeliveries = parseInt(document.getElementById('dailyDeliveries').value) || 50;
+            
+            const costs = calculateCosts(squareFootage, dailyDeliveries);
+
+            // Update slider displays
+            document.getElementById('squareFootageDisplay').textContent = squareFootage.toLocaleString() + ' sq ft';
+            document.getElementById('robotCountDisplay').textContent = costs.robotsNeeded + (costs.robotsNeeded === 1 ? ' Robot needed' : ' Robots needed');
+            document.getElementById('deliveriesDisplay').textContent = dailyDeliveries + ' per day';
+
+            // Update total metrics
+            document.getElementById('traditionalCost').textContent = '$' + costs.traditionalCost.toLocaleString();
+            document.getElementById('wranglerCost').textContent = '$' + Math.round(costs.wranglerCost / 1000) + 'K';
+            document.getElementById('annualSavings').textContent = '$' + costs.annualSavings.toLocaleString();
+            document.getElementById('paybackDays').textContent = costs.paybackDays;
+            document.getElementById('costReduction').textContent = costs.costReduction + '%';
+            document.getElementById('fiveYearSavings').textContent = '$' + Math.round(costs.fiveYearSavings / 1000) + 'K';
+
+            // Update chart
+            updateChart(costs);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('savingsChart').getContext('2d');
+            const costs = calculateCosts(50000, 50);
+            const robotCost = costs.robotsNeeded * 5000;
+            const traditionalAnnualCost = costs.traditionalCost;
+            
+            // Calculate separate cumulative data for each category
+            const overallSavingsData = [];
+            const cleaningSavingsData = [];
+            const deliverySavingsData = [];
+            const robotCostData = [];
+            
+            for (let year = 1; year <= 5; year++) {
+                // Overall cumulative savings
+                const traditionalTotal = traditionalAnnualCost * year;
+                const wranglerTotal = robotCost + (costs.wranglerCost * year);
+                const overallSavings = traditionalTotal - wranglerTotal;
+                overallSavingsData.push(overallSavings);
+                
+                // Cleaning cumulative savings
+                const cleaningTraditional = costs.cleaningTraditionalCost * year;
+                const cleaningWrangler = costs.cleaningWranglerCost * year;
+                const cleaningSavings = cleaningTraditional - cleaningWrangler;
+                cleaningSavingsData.push(cleaningSavings);
+                
+                // Delivery cumulative savings
+                const deliveryTraditional = costs.deliveryTraditionalCost * year;
+                const deliveryWrangler = costs.deliveryWranglerCost * year;
+                const deliverySavings = deliveryTraditional - deliveryWrangler;
+                deliverySavingsData.push(deliverySavings);
+                
+                // Robot cost (positive value, shows as investment)
+                robotCostData.push(robotCost);
+            }
+            
+            savingsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                    datasets: [{
+                        label: 'Overall Savings',
+                        data: overallSavingsData,
+                        borderColor: '#22c55e',
+                        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                        tension: 0.3,
+                        fill: false,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#22c55e',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }, {
+                        label: 'Cleaning Savings',
+                        data: cleaningSavingsData,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.3,
+                        fill: false,
+                        borderWidth: 2,
+                        pointBackgroundColor: '#3b82f6',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 1,
+                        pointRadius: 4
+                    }, {
+                        label: 'Delivery Savings',
+                        data: deliverySavingsData,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.3,
+                        fill: false,
+                        borderWidth: 2,
+                        pointBackgroundColor: '#8b5cf6',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 1,
+                        pointRadius: 4
+                    }, {
+                        label: 'Robot Investment',
+                        data: robotCostData,
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.3,
+                        fill: false,
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ef4444',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff',
+                                font: {
+                                    family: 'Helvetica, Helvetica Neue, Arial, sans-serif',
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = Math.round(context.parsed.y);
+                                    return context.dataset.label + ': $' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#9ca3af',
+                                font: {
+                                    family: 'Helvetica, Helvetica Neue, Arial, sans-serif',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#9ca3af',
+                                font: {
+                                    family: 'Helvetica, Helvetica Neue, Arial, sans-serif',
+                                    size: 11
+                                },
+                                callback: function(value) {
+                                    if (value >= 0) {
+                                    return '$' + (value / 1000).toFixed(0) + 'K';
+                                    } else {
+                                        return '-$' + (Math.abs(value) / 1000).toFixed(0) + 'K';
+                                    }
+                                }
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(costs) {
+            if (savingsChart) {
+                const robotCost = costs.robotsNeeded * 5000;
+                const traditionalAnnualCost = costs.traditionalCost;
+                
+                // Calculate separate cumulative data for each category
+                const overallSavingsData = [];
+                const cleaningSavingsData = [];
+                const deliverySavingsData = [];
+                const robotCostData = [];
+                
+                for (let year = 1; year <= 5; year++) {
+                    // Overall cumulative savings
+                    const traditionalTotal = traditionalAnnualCost * year;
+                    const wranglerTotal = robotCost + (costs.wranglerCost * year);
+                    const overallSavings = traditionalTotal - wranglerTotal;
+                    overallSavingsData.push(overallSavings);
+                    
+                    // Cleaning cumulative savings
+                    const cleaningTraditional = costs.cleaningTraditionalCost * year;
+                    const cleaningWrangler = costs.cleaningWranglerCost * year;
+                    const cleaningSavings = cleaningTraditional - cleaningWrangler;
+                    cleaningSavingsData.push(cleaningSavings);
+                    
+                    // Delivery cumulative savings
+                    const deliveryTraditional = costs.deliveryTraditionalCost * year;
+                    const deliveryWrangler = costs.deliveryWranglerCost * year;
+                    const deliverySavings = deliveryTraditional - deliveryWrangler;
+                    deliverySavingsData.push(deliverySavings);
+                    
+                    // Robot cost (positive value, shows as investment)
+                    robotCostData.push(robotCost);
+                }
+                
+                // Update all datasets
+                savingsChart.data.datasets[0].data = overallSavingsData;
+                savingsChart.data.datasets[1].data = cleaningSavingsData;
+                savingsChart.data.datasets[2].data = deliverySavingsData;
+                savingsChart.data.datasets[3].data = robotCostData;
+                
+                savingsChart.update();
+            }
+        }
+
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                initChart();
+                updateCalculator();
+            }, 100);
+            
+            // Add event listeners for sliders
+            document.getElementById('squareFootage').addEventListener('input', updateCalculator);
+            document.getElementById('dailyDeliveries').addEventListener('input', updateCalculator);
+        });
     </script>
 </body>
 </html> 

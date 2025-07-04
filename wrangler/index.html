@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Cleaning Robot</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8PZZT22DYS');
+    </script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-radius: 8px;
+            --spacing: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: var(--spacing) 0;
+            margin-bottom: var(--spacing);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            padding-top: 4rem;
+            padding-bottom: 2rem;
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+        }
+        
+        .form-container {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            min-width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-label span {
+            color: #4b5563;
+            font-weight: normal;
+            display: inline-block;
+            padding-top: 1px;
+        }
+        
+        /* Specific styling for the pilot interest container */
+        .pilot-interest-container {
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .form-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .form-row .form-group {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .form-row button {
+                align-self: flex-end;
+                margin-top: 1.9rem;
+                width: auto;
+                min-width: 180px;
+            }
+            
+            .pilot-interest-container {
+                margin-top: 0;
+            }
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        
+        button:hover {
+            background-color: #2563eb;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .features {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .cost-teaser {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .final-cta {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6b7280;
+            font-size: 0.875rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 2rem;
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        /* Demo Grid Styles */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .demo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .demo-card {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-video {
+            aspect-ratio: 16/9;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .demo-video img.bottom-focus {
+            object-position: bottom;
+        }
+        
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .demo-title.purple {
+            color: #a855f7;
+        }
+        
+        .demo-title.blue {
+            color: #3b82f6;
+        }
+        
+        .demo-title.green {
+            color: #10b981;
+        }
+        
+        .demo-description {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Header Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Short-staffed? Meet the robot that cleans, delivers, and even takes the elevator.</h1>
+                <p class="subheadline">Autonomous floor cleaning and delivery that handles what gets missed. Helps short-handed teams maintain clean spaces and deliver items with no training, no setup, just results. Join the waitlist to be notified when it's ready.</p>
+                                
+                <div class="form-container">
+                    <form id="email-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name (optional)</label>
+                                <input type="text" id="name" name="name" placeholder="Your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-name">Business Name</label>
+                                <input type="text" id="business-name" name="business-name" placeholder="Your business name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry" required>
+                                  <option value="">Select one...</option>
+                                  <option value="Office / Corporate">Office / Corporate</option>
+                                  <option value="Hotel / Hospitality">Hotel / Hospitality</option>
+                                  <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+                                  <option value="School / University">School / University</option>
+                                  <option value="Healthcare Facility">Healthcare Facility</option>
+                                  <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="pilot-interest-container">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pilot-interest" name="pilot-interest">
+                                <span>Interested in free pilot program</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="demo-interest" name="demo-interest">
+                                <span>Interested in demo</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>What type of automation interests you?</label>
+                            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 0.5rem;">
+                                <label class="checkbox-label" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="interest-delivery" name="interest-delivery">
+                                    <span>Delivery robots</span>
+                                </label>
+                                <label class="checkbox-label" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="interest-cleaning" name="interest-cleaning">
+                                    <span>Cleaning robots</span>
+                                </label>
+                                <label class="checkbox-label" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="interest-both" name="interest-both">
+                                    <span>Both</span>
+                                </label>
+                                <label class="checkbox-label" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="interest-other" name="interest-other">
+                                    <span>Other automation</span>
+                                </label>
+                                <input type="text" id="other-automation-text" name="other-automation-text" placeholder="Please specify..." style="display: none; margin-top: 0.5rem; margin-left: 25px; width: calc(100% - 25px);" />
+                            </div>
+                        </div>
+                        
+                        <div id="estimation-section" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+                            <h4 style="margin-bottom: 1rem; color: var(--text-color);">Help us estimate your needs:</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="square-footage">Square footage for cleaning (optional)</label>
+                                    <input type="number" id="square-footage" name="square-footage" placeholder="e.g., 5000" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="delivery-estimate">Estimated deliveries per day (optional)</label>
+                                    <input type="number" id="delivery-estimate" name="delivery-estimate" placeholder="e.g., 20" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="submit">Join Waitlist</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Demo Section -->
+        <section>
+            <div class="container">
+                <h2>See The Wrangler in Action</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="demo-video">
+                            <img src="../leave_elevator.gif" alt="Robot navigating elevator autonomously">
+                        </div>
+                        <h4 class="demo-title purple">Multi-Floor Delivery System</h4>
+                        <p class="demo-description">Autonomous elevator navigation enabling seamless delivery across all building floors</p>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <div class="demo-video">
+                            <img src="../microbot.gif" alt="Micro-bot deployment in action" class="bottom-focus">
+                        </div>
+                        <h4 class="demo-title blue">Micro-Bot Coordination</h4>
+                        <p class="demo-description">Deploying specialized micro-bots for detailed cleaning tasks</p>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <div class="demo-video">
+                            <img src="../push_button.gif" alt="Robot operating building controls">
+                        </div>
+                        <h4 class="demo-title green">Precise Control Interface</h4>
+                        <p class="demo-description">Operating elevator buttons and building systems with accuracy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Built with ❤️ by robotics engineers and enthusiasts</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFlRCQhc3XYYZK_uTvaPQM1Ul6nh3QnoI",
+            authDomain: "e8-website.firebaseapp.com",
+            projectId: "e8-website",
+            storageBucket: "e8-website.appspot.com",
+            messagingSenderId: "1083565871006",
+            appId: "1:1083565871006:web:06f437aa017cdf6632108f",
+            measurementId: "G-8PZZT22DYS"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Show/hide other automation text input
+        document.getElementById('interest-other').addEventListener('change', function() {
+            const otherText = document.getElementById('other-automation-text');
+            if (this.checked) {
+                otherText.style.display = 'block';
+            } else {
+                otherText.style.display = 'none';
+                otherText.value = '';
+            }
+        });
+
+        // Show/hide estimation section based on automation interest
+        function toggleEstimationSection() {
+            const delivery = document.getElementById('interest-delivery').checked;
+            const cleaning = document.getElementById('interest-cleaning').checked;
+            const both = document.getElementById('interest-both').checked;
+            const estimationSection = document.getElementById('estimation-section');
+            const squareFootageGroup = document.getElementById('square-footage').parentElement;
+            const deliveryEstimateGroup = document.getElementById('delivery-estimate').parentElement;
+            
+            // Show square footage field only if cleaning or both is selected
+            if (cleaning || both) {
+                squareFootageGroup.style.display = 'block';
+            } else {
+                squareFootageGroup.style.display = 'none';
+                document.getElementById('square-footage').value = '';
+            }
+            
+            // Show delivery estimate field only if delivery or both is selected
+            if (delivery || both) {
+                deliveryEstimateGroup.style.display = 'block';
+            } else {
+                deliveryEstimateGroup.style.display = 'none';
+                document.getElementById('delivery-estimate').value = '';
+            }
+            
+            // Show the entire estimation section if any relevant option is selected
+            if (delivery || cleaning || both) {
+                estimationSection.style.display = 'block';
+            } else {
+                estimationSection.style.display = 'none';
+            }
+        }
+
+        // Add event listeners to automation checkboxes
+        document.getElementById('interest-delivery').addEventListener('change', toggleEstimationSection);
+        document.getElementById('interest-cleaning').addEventListener('change', toggleEstimationSection);
+        document.getElementById('interest-both').addEventListener('change', toggleEstimationSection);
+
+        // Form handling - now saves to Firebase
+        document.getElementById('email-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const businessName = document.getElementById('business-name').value;
+            const industry = document.getElementById('industry').value;
+            const pilotInterest = document.getElementById('pilot-interest').checked;
+            const demoInterest = document.getElementById('demo-interest').checked;
+            const otherAutomation = document.getElementById('other-automation-text').value;
+            const squareFootage = document.getElementById('square-footage').value;
+            const deliveryEstimate = document.getElementById('delivery-estimate').value;
+            
+            try {
+                console.log("Attempting to submit form data...");
+                const docRef = await addDoc(collection(db, "submissions"), {
+                    email: email,
+                    name: name,
+                    businessName: businessName,
+                    industry: industry,
+                    pilotInterest: pilotInterest,
+                    demoInterest: demoInterest,
+                    otherAutomation: otherAutomation,
+                    squareFootage: squareFootage,
+                    deliveryEstimate: deliveryEstimate,
+                    source: 'top-form',
+                    timestamp: new Date()
+                });
+                console.log("Document written with ID: ", docRef.id);
+                
+                // Google tag (gtag.js) event
+                gtag('event', 'add_to_cart', {
+                    form_id: 'top-form',
+                    email: email,
+                    industry: industry
+                });
+                
+                alert('Thanks for joining the waitlist! We\'ll notify you as soon as it\'s ready.');
+                this.reset();
+            } catch (error) {
+                console.error("Error submitting form: ", error);
+                alert('There was an error submitting the form. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
