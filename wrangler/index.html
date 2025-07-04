@@ -569,6 +569,22 @@
         document.getElementById('interest-cleaning').addEventListener('change', toggleEstimationSection);
         document.getElementById('interest-both').addEventListener('change', toggleEstimationSection);
 
+        // Auto-check demo interest if URL contains demo=true parameter
+        function checkForDemoParameter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const demoParam = urlParams.get('demo');
+            
+            if (demoParam === 'true') {
+                const demoCheckbox = document.getElementById('demo-interest');
+                if (demoCheckbox) {
+                    demoCheckbox.checked = true;
+                }
+            }
+        }
+        
+        // Run the demo parameter check when page loads
+        checkForDemoParameter();
+
         // Form handling - now saves to Firebase
         document.getElementById('email-form').addEventListener('submit', async function(e) {
             e.preventDefault();
