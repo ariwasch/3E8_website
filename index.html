@@ -12,7 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'G-8PZZT22DYS');
     </script>
-    <meta property="og:title" content="3E8 Wrangler - Multi-Floor Payload Delivery Robot">
+    <meta property="og:title" content="3E8 Robotics - Multi-Floor Delivery Robot">
     <meta property="og:description" content="Advanced multi-floor robot for autonomous payload delivery and micro-bot deployment. Elevator-capable for complete building automation at $3800.">
     <meta property="og:image" content="images/3e8_full.png">
     <meta property="og:type" content="website">
@@ -108,9 +108,32 @@
             background: #374151;
             border-radius: 5px;
         }
+        
+        /* Partner card styling */
+        .partner-card {
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .hover\:scale-102:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Industry experts logo styling */
+        .expert-card img {
+            transition: all 0.3s ease;
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
-<body class="flex flex-col min-h-screen bg-black text-white">
+<body class="flex flex-col min-h-screen text-white" style="background-color: #111827;">
     <header class="fixed top-0 left-0 right-0 z-50 py-6 px-6 from-transparent-to-black">
         <div class="container mx-auto flex justify-start md:justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
@@ -122,7 +145,7 @@
                     <li><a href="#hero" class="text-sm uppercase tracking-wider text-blue-500">Home</a></li>
                     <li><a href="/wrangler" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Waitlist</a></li>
                     <li><a href="#robot" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Calculate Savings</a></li>
-                    <li><a href="/demo" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Demo</a></li>
+                    <li><a href="#demo" class="text-sm uppercase tracking-wider text-gray-400 hover:text-white">Demo</a></li>
                 </ul>
             </nav>
         </div>
@@ -131,77 +154,162 @@
     <main class="flex-grow">
         <section
   id="hero"
-  class="relative min-h-screen w-full flex flex-col justify-center items-center pt-24 md:pt-24 box-border overflow-hidden bg-black scroll-mt-24"
+  class="relative min-h-screen w-full flex flex-col justify-center items-center pt-16 md:pt-20 box-border overflow-hidden scroll-mt-24"
+  style="background-color: #111827;"
 >
-            <div class="video-background absolute inset-0 w-full h-full z-0">
-                <img 
-                    src="images/3E8_gif.gif"
-                    alt="3E8 Wrangler Robot Demo"
-                    class="w-full h-full object-cover"
-                    id="background-gif">
-            </div>
-            <div class="hero-overlay absolute inset-0 z-10"></div>
-            <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight mx-auto text-center max-w-3xl z-20">Stay put. We’ll deliver it</h2>
-            <p class="text-gray-300 text-lg mb-6 z-20 text-center px-4 md:px-8">for multi-floor delivery in hotels, apartments, and more.</p>
-            <a href="mailto:team@3e8robotics.com" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold mb-12 md:mb-0 z-20">
-                Contact Us
-                <i data-lucide="mail" class="ml-3 h-6 w-6"></i>
-            </a>
-            <div class="w-full z-20 flex-shrink-0 pb-4 md:pb-8 pt-4 md:pt-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4 md:px-8">
-                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 border border-blue-500/20">
-                        <div class="aspect-video rounded-lg overflow-hidden mb-3">
-                            <img 
-                                src="images/leave_elevator.gif" 
-                                alt="Robot navigating elevator autonomously"
-                                class="w-full h-full object-cover"
-                            >
-                        </div>
-                        <h4 class="text-lg font-bold mb-2 text-purple-400">Multi-Floor Delivery</h4>
-                        <p class="text-gray-300 text-sm">Autonomous payload delivery across multiple floors with advanced navigation</p>
-                    </div>
-                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 border border-blue-500/20">
-                        <div class="aspect-video rounded-lg overflow-hidden mb-3">
-                            <img 
-                                src="images/microbot.gif" 
-                                alt="Micro-bot deployment in action"
-                                class="w-full h-full object-cover object-bottom"
-                            >
-                        </div>
-                        <h4 class="text-lg font-bold mb-2 text-blue-400">Micro-Bot Deployment</h4>
-                        <p class="text-gray-300 text-sm">Deploy and coordinate smaller robots for specialized tasks</p>
-                    </div>
-                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 border border-blue-500/20">
-                        <div class="aspect-video rounded-lg overflow-hidden mb-3">
-                            <img 
-                                src="images/push_button.gif" 
-                                alt="Robot operating building controls"
-                                class="w-full h-full object-cover"
-                            >
-                        </div>
-                        <h4 class="text-lg font-bold mb-2 text-green-400">Elevator Navigation</h4>
-                        <p class="text-gray-300 text-sm">Seamlessly navigate between floors using elevators</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-12 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-8 text-white">Piloted Partners</h2>
-                <div class="flex flex-row flex-wrap justify-center items-center gap-8 overflow-x-auto">
-                    <img src="images/union.png" alt="Union Square Hospitality Group" class="h-12 w-auto object-contain rounded-lg hover:grayscale-0 transition duration-300" />
-                    <img src="images/hilton.jpeg" alt="Hilton" class="h-24 w-auto object-contain rounded-lg hover:grayscale-0 transition duration-300" />
-                    <img src="images/chancellor.jpeg" alt="Chancellor" class="h-24 w-auto object-contain rounded-lg hover:grayscale-0 transition duration-300 rounded-lg" />
-                    <img src="images/infinity.png" alt="Infinity" class="h-24 w-auto object-contain rounded-lg hover:grayscale-0 transition duration-300 rounded-lg" />
-                    <img src="images/fortmason.png" alt="Fort Mason" class="h-24 w-auto object-contain rounded-xl hover:grayscale-0 transition duration-300 rounded-lg" />
+            
+                        <div class="text-center px-6 max-w-6xl mx-auto relative z-20">
+                <!-- Enhanced Main Heading -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight tracking-tight">
+                    <span class="font-normal">Stay put.</span>
+                    <span class="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">
+                        We'll deliver it.
+                    </span>
+                    </h1>
 
+                <!-- Enhanced Description -->
+                <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
+                    Autonomous multi-floor delivery robots for hotels, apartments, and office buildings.<br>
+                    </p>
+
+                <!-- Badge -->
+                <div class="mb-4 text-center">
+                                        <div class="inline-flex items-center bg-blue-500/10 text-blue-400 border border-blue-500/20 px-4 py-2 text-sm font-medium rounded-full">
+                        <img src="foundersinc.png" alt="Founders Inc" class="h-4 w-auto mr-2" style="filter: brightness(0) saturate(100%) invert(19%) sepia(96%) saturate(7463%) hue-rotate(357deg) brightness(103%) contrast(118%);">
+                        backed by founders inc
+                    </div>
+            </div>
+
+                <!-- Enhanced Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="mailto:team@3e8robotics.com" class="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 px-6 py-3 text-base rounded-full inline-flex items-center justify-center font-semibold">
+                        <i data-lucide="mail" class="mr-2 h-4 w-4"></i>
+                        Contact Us
+                    </a>
+                    <a href="/wrangler" class="border-2 border-white/30 text-white hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20 hover:border-white/50 hover:scale-105 bg-transparent px-6 py-3 text-base transition-all duration-300 rounded-full inline-flex items-center justify-center font-semibold shadow-lg hover:shadow-xl">
+                        Join Waitlist
+                        <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+                
+                <!-- Enhanced Feature Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-400/50 hover:bg-white/10 hover:scale-102 transition-all duration-300 group rounded-xl p-6 shadow-lg hover:shadow-purple-500/20 hover:z-10 relative">
+                        <div class="w-full aspect-video rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 shadow-lg">
+                            <img 
+                                src="delivery.gif" 
+                                alt="Smart delivery robot navigating complex environments"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 shadow-inner"
+                            >
+                        </div>
+                        <h4 class="text-xl text-purple-400 font-semibold mb-3">Smart Delivery</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Autonomous delivery robot navigates complex floorplans with obstacle avoidance and smart rerouting.</p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-400/50 hover:bg-white/10 hover:scale-102 transition-all duration-300 group rounded-xl p-6 shadow-lg hover:shadow-blue-500/20 hover:z-10 relative">
+                        <div class="w-full aspect-video rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 shadow-lg">
+                            <img 
+                                src="button.gif" 
+                                alt="Robot calling elevator and pressing buttons"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 shadow-inner"
+                            >
+                        </div>
+                        <h4 class="text-xl text-blue-400 font-semibold mb-3">Elevator Intelligence</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Our robot seamlessly calls elevators, presses buttons, and transitions between floors with reliable precision.</p>
+                    </div>
                 </div>
             </div>
-        
         </section>
-        <section id="robot" class="py-12 bg-black">
+        
+        <!-- Section Divider -->
+        <div class="border-t border-white/10" style="background-color: #111827;"></div>
+        
+        <!-- Demo Video Section -->
+        <section id="demo" class="py-12" style="background-color: #111827;">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-8">Calculate Your Delivery Savings</h2>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        See It in Action
+                    </h2>
+                </div>
+                
+                <!-- Video Container -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                        <div class="aspect-video">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/mdClGEn8urE" 
+                                title="3E8 Robot Demo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                class="w-full h-full"
+                            ></iframe>
+                        </div>
+                        <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Divider -->
+        <div class="border-t border-white/10" style="background-color: #111827;"></div>
+        
+                <section class="py-20" style="background-color: #111827;">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-white">Piloted With Leading Hotels and Cultural Venues</h2>
+                    <p class="text-gray-400 text-xl">Trusted by leading hospitality and venue partners</p>
+                </div>
+                
+                <!-- Partner Grid -->
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">Hilton Toronto</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">Toronto, Canada</p>
+                        </div>
+                        
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">Chancellor Hotel</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">San Francisco, CA</p>
+                        </div>
+                        
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">Infinity Hotel</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">San Francisco, CA</p>
+                        </div>
+                        
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">Fort Mason Center for Arts & Culture</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">San Francisco, CA</p>
+                        </div>
+                        
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">Union Square Plaza Hotel</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">San Francisco, CA</p>
+                        </div>
+                        
+                        <div class="partner-card rounded-xl p-6 text-center group transition-all duration-300 hover:scale-102" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 class="text-white mb-2" style="font-weight: 600; font-size: 1.1rem;">One Rincon Hill</h3>
+                            <p class="text-gray-400" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">San Francisco, CA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="border-t border-white/10" style="background-color: #111827;"></div>
+        
+        <section id="robot" class="py-12" style="background-color: #111827;">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-2">Calculate Your Delivery Savings</h2>
+                    <p class="text-gray-400 text-base">See how much you could save with automated delivery</p>
+                </div>
                 
                 <div class="max-w-5xl mx-auto">
                     <!-- Daily Deliveries Slider -->
@@ -232,19 +340,19 @@
                         <div class="space-y-6">
                             <!-- Summary Comparison -->
                             <div class="bg-gray-900 p-6 rounded-xl border border-blue-500/20">
-                                <h3 class="text-xl font-semibold mb-4 text-center">Annual Delivery Cost Comparison</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-center">Cost Comparison</h3>
                                 <div class="space-y-4">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-gray-300">Manual Delivery:</span>
+                                        <span class="text-gray-300">Manual Delivery (Annual):</span>
                                         <span class="text-red-400 font-bold text-xl" id="traditionalCost">$108,000</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-gray-300">With Wrangler:</span>
-                                        <span class="text-green-400 font-bold text-xl" id="wranglerCost">$5,400</span>
+                                        <span class="text-gray-300">Robot (One-time Cost):</span>
+                                        <span class="text-blue-400 font-bold text-xl" id="wranglerCost">$15K</span>
                                     </div>
                                     <div class="border-t border-gray-600 pt-4">
                                         <div class="flex justify-between items-center">
-                                            <span class="font-semibold text-lg">Annual Savings:</span>
+                                            <span class="font-semibold text-lg">Year 1 Net Savings:</span>
                                             <span class="text-green-400 font-bold text-2xl" id="annualSavings">$102,600</span>
                                         </div>
                                     </div>
@@ -278,10 +386,12 @@
                     </div>
 
                     <!-- Data Source Note -->
-                    <div class="text-center mt-8">
-                        <p class="text-xs text-gray-500">
-                            Cost estimates based on industry data: Average delivery cost of $8.40 per delivery including labor, overhead, and operational expenses
+                    <div class="text-center mt-6">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-3 max-w-2xl mx-auto">
+                            <p class="text-xs text-gray-400">
+                                💡 Cost estimates based on industry data: Average delivery cost of $8.40 per delivery including labor, overhead, and operational expenses
                         </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -289,64 +399,82 @@
 
     </main>
 
-    <section id="experts" class="py-20 bg-gray-900">
+    <!-- Section Divider -->
+    <div class="border-t border-white/10" style="background-color: #111827;"></div>
+
+    <section id="experts" class="py-16" style="background-color: #111827;">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">Built by Industry Experts</h2>
-            <div class="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-12 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/irobot-logo.png" alt="iRobot logo" class="h-12 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/Relay_logo_color.png" alt="Relay Robotics logo" class="h-16 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/indie-Logo.png" alt="Indie Semiconductor logo" class="h-16 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/Rivian-Symbol.png" alt="Rivian logo" class="h-32 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/johns_hopkins.png" alt="Tesla logo" class="h-16 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/qnx.png" alt="QNX logo" class="h-22 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-16 w-auto object-contain">
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-20">
-                    <img src="images/verkada.png" alt="Level logo" class="h-22 w-auto object-contain">
+                        <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                    Who We Are
+                </h2>
+                <p class="text-gray-400 text-lg">Previously built robots, satellites, autonomous cars, and consumer electronics.</p>
+            </div>
+
+            <!-- Combined Layout: Video + Team Background -->
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Left: Team Video -->
+                    <div class="order-2 lg:order-1">
+                        <div class="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                            <div class="aspect-video">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/ul135E_HY1M" 
+                                    title="3E8 Robotics Team & Traction" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen
+                                    class="w-full h-full"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Company Logos -->
+                    <div class="order-1 lg:order-2">
+                        <h3 class="text-xl font-bold text-center mb-6 text-white">Built by Industry Experts</h3>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/SpaceX_Logo_Black.png" alt="SpaceX logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/irobot-logo.png" alt="iRobot logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/Relay_logo_color.png" alt="Relay Robotics logo" class="h-10 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/indie-Logo.png" alt="Indie Semiconductor logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/Rivian-Symbol.png" alt="Rivian logo" class="h-12 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/johns_hopkins.png" alt="Johns Hopkins logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/qnx.png" alt="QNX logo" class="h-12 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/Blue_Logo_LockUp_FullColor.png" alt="Blue Origin logo" class="h-8 w-auto object-contain">
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-lg flex items-center justify-center h-16 hover:scale-105 transition-transform">
+                                <img src="images/verkada.png" alt="Verkada logo" class="h-10 w-auto object-contain">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Autonomous Cleaning Section -->
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-            <!-- Image: appears after text on mobile, before text on desktop -->
-            <img src="images/cleaning-rough.png"
-                 alt="Autonomous Cleaning Robot"
-                 class="w-40 h-40 md:w-64 md:h-64 object-cover rounded-xl shadow-lg mb-4 md:mb-0 mx-auto order-2 md:order-1" />
-            <!-- Text and button: appears before image on mobile, after image on desktop -->
-            <div class="flex-1 text-center md:text-left order-1 md:order-2">
-                <h2 class="text-4xl font-bold mb-4 text-white">Interested in Autonomous Cleaning?</h2>
-                <p class="text-lg text-gray-200 mb-6">
-                    We are exploring single-floor cleaning robots for large commerical spaces that pair with our multi-floor delivery robot.
-                </p>
-                <a href="mailto:team@3e8robotics.com" class="bg-blue-600 hover:bg-blue-700 text-white transition-colors text-xl px-6 py-4 rounded-full inline-flex items-center justify-center font-semibold mb-12 md:mb-0">
-                    Contact Us
-                    <i data-lucide="mail" class="ml-3 h-6 w-6"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Section Divider -->
+    <div class="border-t border-white/10" style="background-color: #111827;"></div>
 
     <!-- Bottom CTA Section -->
-    <section class="py-20 bg-gray-900 relative border-t border-blue-500/20">
+    <section class="py-20 relative" style="background-color: #111827;">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-4xl md:text-5xl font-bold mb-6"><span class="text-white">Ready to Transform Your Building Operations?</span></h2>
@@ -366,7 +494,10 @@
         </div>
     </section>
 
-    <footer class="bg-black text-white py-12">
+    <!-- Section Divider -->
+    <div class="border-t border-white/10" style="background-color: #111827;"></div>
+
+    <footer class="text-white py-12" style="background-color: #111827;">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
@@ -436,26 +567,28 @@
             const workingDaysPerYear = 365; // Full year operations
             const deliveryTraditionalCost = deliveriesPerDay * costPerDelivery * workingDaysPerYear;
             
-            // Calculate robot count based on delivery capacity
-            const robotDeliveryCapacity = 50; // deliveries per day per robot
-            const robotsNeeded = Math.max(1, Math.ceil(deliveriesPerDay / robotDeliveryCapacity));
+            // Calculate robot count based on delivery capacity (always 1 robot)
+            const robotsNeeded = 1;
             
             // Calculate delivery costs only
-            const deliveryWranglerCost = robotsNeeded * 5000; // Fixed $5K per robot for delivery operations annually
+            const robotPurchasePrice = 15000; // One-time robot purchase cost
+            const robotAnnualOperatingCost = 0; // No annual operating costs
+            const deliveryWranglerCost = robotPurchasePrice; // Show purchase price in comparison
             const deliverySavings = deliveryTraditionalCost - deliveryWranglerCost;
             const deliverySavingsPercent = Math.round((deliverySavings / deliveryTraditionalCost) * 100);
             
             // Total costs (delivery only)
             const traditionalCost = deliveryTraditionalCost;
-            const wranglerCost = robotsNeeded * 5000; // Each robot costs $5K total to operate annually
-            const annualSavings = traditionalCost - wranglerCost;
+            const wranglerCost = robotPurchasePrice; // Show robot purchase price
+            const year1TotalRobotCost = robotPurchasePrice + robotAnnualOperatingCost; // Purchase + first year operating
+            const year1NetSavings = traditionalCost - year1TotalRobotCost; // Net savings in year 1
             
             // ROI calculations
-            const robotPrice = 5000;
-            const totalRobotCost = robotsNeeded * robotPrice;
-            const paybackDays = annualSavings > 0 ? Math.round((totalRobotCost / annualSavings) * 365) : 0;
-            const costReduction = Math.round((annualSavings / traditionalCost) * 100);
-            const fiveYearSavings = (annualSavings * 5) - totalRobotCost;
+            const totalRobotCost = robotPurchasePrice;
+            const actualAnnualSavings = traditionalCost - robotAnnualOperatingCost; // Real annual savings after purchase
+            const paybackDays = actualAnnualSavings > 0 ? Math.round((totalRobotCost / actualAnnualSavings) * 365) : 0;
+            const costReduction = Math.round((actualAnnualSavings / traditionalCost) * 100);
+            const fiveYearSavings = (actualAnnualSavings * 5) - totalRobotCost;
 
             return {
                 // Delivery metrics
@@ -468,7 +601,8 @@
                 // Total metrics
                 traditionalCost,
                 wranglerCost,
-                annualSavings,
+                year1NetSavings,
+                actualAnnualSavings,
                 paybackDays,
                 robotsNeeded,
                 costReduction,
@@ -486,8 +620,8 @@
 
             // Update total metrics
             document.getElementById('traditionalCost').textContent = '$' + costs.traditionalCost.toLocaleString();
-            document.getElementById('wranglerCost').textContent = '$' + Math.round(costs.wranglerCost / 1000) + 'K';
-            document.getElementById('annualSavings').textContent = '$' + costs.annualSavings.toLocaleString();
+            document.getElementById('wranglerCost').textContent = '$15K';
+            document.getElementById('annualSavings').textContent = '$' + costs.year1NetSavings.toLocaleString();
             document.getElementById('paybackDays').textContent = costs.paybackDays;
             document.getElementById('costReduction').textContent = costs.costReduction + '%';
             document.getElementById('fiveYearSavings').textContent = '$' + Math.round(costs.fiveYearSavings / 1000) + 'K';
@@ -499,7 +633,8 @@
         function initChart() {
             const ctx = document.getElementById('savingsChart').getContext('2d');
             const costs = calculateCosts(50);
-            const robotCost = costs.robotsNeeded * 5000;
+            const robotPurchasePrice = 15000;
+            const robotAnnualOperatingCost = 0;
             const traditionalAnnualCost = costs.traditionalCost;
             
             // Calculate cumulative data for overall savings only
@@ -509,12 +644,12 @@
             for (let year = 1; year <= 5; year++) {
                 // Overall cumulative savings
                 const traditionalTotal = traditionalAnnualCost * year;
-                const wranglerTotal = robotCost + (costs.wranglerCost * year);
+                const wranglerTotal = robotPurchasePrice + (robotAnnualOperatingCost * year);
                 const overallSavings = traditionalTotal - wranglerTotal;
                 overallSavingsData.push(overallSavings);
                 
                 // Robot cost (positive value, shows as investment)
-                robotCostData.push(robotCost);
+                robotCostData.push(robotPurchasePrice);
             }
             
             savingsChart = new Chart(ctx, {
@@ -609,7 +744,8 @@
 
         function updateChart(costs) {
             if (savingsChart) {
-                const robotCost = costs.robotsNeeded * 5000;
+                const robotPurchasePrice = 15000;
+                const robotAnnualOperatingCost = 0;
                 const traditionalAnnualCost = costs.traditionalCost;
                 
                 // Calculate cumulative data for overall savings only
@@ -619,12 +755,12 @@
                 for (let year = 1; year <= 5; year++) {
                     // Overall cumulative savings
                     const traditionalTotal = traditionalAnnualCost * year;
-                    const wranglerTotal = robotCost + (costs.wranglerCost * year);
+                    const wranglerTotal = robotPurchasePrice + (robotAnnualOperatingCost * year);
                     const overallSavings = traditionalTotal - wranglerTotal;
                     overallSavingsData.push(overallSavings);
                     
                     // Robot cost (positive value, shows as investment)
-                    robotCostData.push(robotCost);
+                    robotCostData.push(robotPurchasePrice);
                 }
                 
                 // Update all datasets
