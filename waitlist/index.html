@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous Cleaning Robot</title>
+    <title>Multi-Floor Delivery Robot</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PZZT22DYS"></script>
     <script>
@@ -355,16 +355,69 @@
             font-size: 0.875rem;
             margin-bottom: 0;
         }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 1.5rem;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo {
+            height: 1.25rem;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        /* Adjust hero section to account for fixed header */
+        .hero {
+            padding-top: 6rem;
+            padding-bottom: 2rem;
+        }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/3e8_white_logo.png" alt="3E8 Robotics Logo" class="logo">
+                <span class="logo-text">3E8 Robotics</span>
+            </a>
+        </div>
+    </header>
+    
     <main>
         <!-- Header Section -->
         <section class="hero">
             <div class="container">
-                <h1>Short-staffed? Meet the robot that cleans, delivers, and even takes the elevator.</h1>
-                <p class="subheadline">Autonomous floor cleaning and delivery that handles what gets missed. Helps short-handed teams maintain clean spaces and deliver items with no training, no setup, just results. Join the waitlist to be notified when it's ready.</p>
-                                
+                <h1>Short-staffed? Meet the robot that delivers between floors and even takes the elevator.</h1>
+                <p class="subheadline">Autonomous multi-floor delivery that handles what gets missed. Helps short-handed teams deliver items efficiently with no training, no setup, just results. Join the waitlist to be notified when it's ready.</p>
                 <div class="form-container">
                     <form id="email-form">
                         <div class="form-row">
@@ -415,19 +468,7 @@
                             </label>
                         </div>
                                                 
-                        <div id="estimation-section" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
-                            <h4 style="margin-bottom: 1rem; color: var(--text-color);">Help us estimate your needs:</h4>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="square-footage">Square footage for cleaning (optional)</label>
-                                    <input type="number" id="square-footage" name="square-footage" placeholder="e.g., 5000" min="0">
-                                </div>
-                                <div class="form-group">
-                                    <label for="delivery-estimate">Estimated deliveries per day (optional)</label>
-                                    <input type="number" id="delivery-estimate" name="delivery-estimate" placeholder="e.g., 20" min="0">
-                                </div>
-                            </div>
-                        </div>
+
                         
                         <div class="button-container">
                             <button type="submit">Join Waitlist</button>
@@ -490,54 +531,7 @@
         const analytics = getAnalytics(app);
         const db = getFirestore(app);
 
-        // Show/hide other automation text input
-        document.getElementById('interest-other').addEventListener('change', function() {
-            const otherText = document.getElementById('other-automation-text');
-            if (this.checked) {
-                otherText.style.display = 'block';
-            } else {
-                otherText.style.display = 'none';
-                otherText.value = '';
-            }
-        });
 
-        // Show/hide estimation section based on automation interest
-        function toggleEstimationSection() {
-            const delivery = document.getElementById('interest-delivery').checked;
-            const cleaning = document.getElementById('interest-cleaning').checked;
-            const both = document.getElementById('interest-both').checked;
-            const estimationSection = document.getElementById('estimation-section');
-            const squareFootageGroup = document.getElementById('square-footage').parentElement;
-            const deliveryEstimateGroup = document.getElementById('delivery-estimate').parentElement;
-            
-            // Show square footage field only if cleaning or both is selected
-            if (cleaning || both) {
-                squareFootageGroup.style.display = 'block';
-            } else {
-                squareFootageGroup.style.display = 'none';
-                document.getElementById('square-footage').value = '';
-            }
-            
-            // Show delivery estimate field only if delivery or both is selected
-            if (delivery || both) {
-                deliveryEstimateGroup.style.display = 'block';
-            } else {
-                deliveryEstimateGroup.style.display = 'none';
-                document.getElementById('delivery-estimate').value = '';
-            }
-            
-            // Show the entire estimation section if any relevant option is selected
-            if (delivery || cleaning || both) {
-                estimationSection.style.display = 'block';
-            } else {
-                estimationSection.style.display = 'none';
-            }
-        }
-
-        // Add event listeners to automation checkboxes
-        document.getElementById('interest-delivery').addEventListener('change', toggleEstimationSection);
-        document.getElementById('interest-cleaning').addEventListener('change', toggleEstimationSection);
-        document.getElementById('interest-both').addEventListener('change', toggleEstimationSection);
 
         // Auto-check demo interest if URL contains demo=true parameter
         function checkForDemoParameter() {
@@ -566,9 +560,6 @@
             const floors = document.getElementById('floors').value;
             const pilotInterest = document.getElementById('pilot-interest').checked;
             const demoInterest = document.getElementById('demo-interest').checked;
-            const otherAutomation = document.getElementById('other-automation-text').value;
-            const squareFootage = document.getElementById('square-footage').value;
-            const deliveryEstimate = document.getElementById('delivery-estimate').value;
             
             try {
                 console.log("Attempting to submit form data...");
@@ -580,9 +571,6 @@
                     floors: floors,
                     pilotInterest: pilotInterest,
                     demoInterest: demoInterest,
-                    otherAutomation: otherAutomation,
-                    squareFootage: squareFootage,
-                    deliveryEstimate: deliveryEstimate,
                     source: 'top-form',
                     timestamp: new Date()
                 });
